@@ -36,19 +36,37 @@ $( document ).ready(function()
 				for (var i = 0; i < response.data.length; i++)
 				{
 					console.log('response: ',response);
-					let imageURL = response.data[i].images.fixed_width.url;
+					let imageURL = response.data[i].images.fixed_width_still.url;
 					let gifDiv = $("<div class='item'>");
+					gifDiv.addClass('smallGif');
 					console.log('image URL: ',imageURL);
 					let animalImage = $("<img>");
 					animalImage.attr("src", imageURL);
 		        	animalImage.attr("alt", "animal image");
+		        	animalImage.attr('gif', response.data[i].images.original.url);
 		        	//$('.gif').pause();
 		        	gifDiv.prepend(animalImage);
 		        	$('#imageContatiner').prepend(gifDiv);
 	        	}
 			});
 		});
-	})
+
+		$(document).on('click', '.smallGif img', function playImage()
+		{
+			console.log(this);
+       		var src = $(this).attr("src");
+     		if($(this).hasClass('playing'))
+     		{
+		        $(this).attr('src', src.replace(/\.gif/i, "_s.gif"))
+		        $(this).removeClass('playing');
+    		}
+    		else 
+    		{
+		       $(this).addClass('playing');
+		       $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
+     		}
+		});
+})
 
 	
 
