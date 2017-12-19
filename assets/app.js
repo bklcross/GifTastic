@@ -27,7 +27,7 @@ $( document ).ready(function()
 
 			let APIkey = "sMwc8ewdP9gAt6Mm886EZEWcJ56AYFTZ";
 			let limit = 20;
-			let queryURL = "http://api.giphy.com/v1/gifs/search?q="+searchInput+"&api_key="+APIkey+"&limit="+limit;
+			let queryURL = "https://api.giphy.com/v1/gifs/search?q="+searchInput+"&api_key="+APIkey+"&limit="+limit;
 
 			console.log('queryURL: ',queryURL);
 			
